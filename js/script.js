@@ -14,9 +14,9 @@ rp.settings = {
     // Speed of the animation
     animationSpeed: 100,
     shouldAutoNextSlide: true,
-    timeToNextSlide: 6 * 1000,
+    timeToNextSlide: 70 * 1000,
     cookieDays: 300,
-    nsfw: true,
+    nsfw: false,
     sound: false
 };
 
@@ -315,16 +315,16 @@ $(function () {
 
         var updateTimeToNextSlide = function () {
             var val = $('#timeToNextSlide').val();
-            rp.settings.timeToNextSlide = parseFloat(val) * 1000;
-            setCookie(cookieNames.timeToNextSlideCookie, val);
+            // rp.settings.timeToNextSlide = parseFloat(val) * 1000;
+            // setCookie(cookieNames.timeToNextSlideCookie, val);
         };
 
         var timeByCookie = getCookie(cookieNames.timeToNextSlideCookie);
         if (timeByCookie === undefined) {
             updateTimeToNextSlide();
         } else {
-            rp.settings.timeToNextSlide = parseFloat(timeByCookie) * 1000;
-            $('#timeToNextSlide').val(timeByCookie);
+            // rp.settings.timeToNextSlide = parseFloat(timeByCookie) * 1000;
+            // $('#timeToNextSlide').val(timeByCookie);
         }
 
         $('#fullScreenButton').click(toggleFullScreen);
@@ -1057,7 +1057,7 @@ $(function () {
 
         var subredditName;
         if (rp.subredditUrl === "") {
-            rp.subredditUrl = "/";
+            rp.subredditUrl = "/r/Cinemagraphs";
             subredditName = "reddit.com" + getVarsQuestionMark;
             //var options = ["/r/aww/", "/r/earthporn/", "/r/foodporn", "/r/pics"];
             //rp.subredditUrl = options[Math.floor(Math.random() * options.length)];
@@ -1099,49 +1099,7 @@ $(function () {
     }
 });
 
-/*rp.flattenRedditData = function(data) {
-    // Parse comments, get all links
-    // https://www.reddit.com/r/photoshopbattles/comments/7i5ipw/psbattle_this_hyped_up_mannequin/.json?jsonp=?&
 
-    var queue = [];
-    var urls = [];
-    if (data && data.data && data.data.children) {
-        children = data.data.children;
-    } else {
-        // comments of e.g. a photoshopbattles post
-        if (data.length > 0) {
-            for (var i = 0; i < data.length; i++) {
-                children = flattenRedditData(data[i]);
-                Array.prototype.push.apply(children, newChildren);
-            }
-        }
-    }
-
-    var urlChildren = [];
-    for (var i = 0; i < children.length; i++) {
-        var item = children[i];
-        if (item.data && (item.data.url || item.data.link_url)) {
-            // great
-            urlChildren.push(item);
-            continue;
-        }
-
-        // keep digging for more urls, remove this one
-        if (item.data) {
-            var newChildren = rp.flattenRedditData(item.data.replies);
-            Array.prototype.push.apply(urlChildren, newChildren);
-            var newChildren = flattenRedditData(item.data.children);
-            Array.prototype.push.apply(urlChildren, newChildren);
-            if (item.data.body) {
-                // this is a comment
-                console.log('body', item.body);
-            }
-            continue;
-        }
-    }
-
-    return urls;
-}*/
 
 
 function browserNodeExport(exported, name) {
