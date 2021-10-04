@@ -854,7 +854,7 @@ $(function () {
 
     var isShuffleOn = function () {
         var query = parseQuery(window.location.search);
-        return !!query.shuffle;
+        return true;
     };
 
     var getRedditImages = function () {
