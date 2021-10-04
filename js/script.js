@@ -633,7 +633,7 @@ $(function () {
         toggleNumberButton(imageIndex, true);
     };
 
-    var playButton = $('<img id="playButton" src="/images/play.svg" />');
+    var playButton = $('<img id="playButton" src="./images/play.svg" />');
     playButton.click(function () {
         if ($('video')[0]) {
             $('video')[0].play();
